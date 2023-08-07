@@ -86,6 +86,11 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+			
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
@@ -456,9 +461,9 @@ class TitleState extends MusicBeatState
 	}
 
 	function fuckyou(){
-		#if desktop
+		#if android
 		MusicBeatState.switchState(new menus.MainMenuState());
-		#else
+		#elseif desktop // lol
 		MusicBeatState.switchState(new menus.PiracyScreen());
 		#end
 	}
