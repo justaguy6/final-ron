@@ -76,6 +76,10 @@ class CreditMenu extends MusicBeatState {
 		add(dividingBar);
 		super.create();
 
+		#if android
+                addVirtualPad(UP_DOWN, A);
+                #end
+
 		changeSelection(0);
 	}
 	var keyCount:Int = 0;
