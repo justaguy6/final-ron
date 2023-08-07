@@ -59,7 +59,9 @@ class Main extends Sprite
         Sys.println(errMsg);
 
         Application.current.window.alert(errMsg, "um");
+	#if desktop 
         DiscordClient.shutdown();
+        #end
         Sys.exit(1);
     }
 
@@ -89,8 +91,10 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
+		#if windows 
 		var data = new haxe.Http("https://github.com/FNF-CNE-Devs/CodenameEngine/blob/main/buildnumber.txt");
 		data.onData = function(d) trace(d);
+		#end
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -106,7 +110,7 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
-		#if !mobile
+		#if android
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
