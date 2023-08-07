@@ -46,6 +46,12 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 		trace(cameras);
+
+
+		#if android
+                addVirtualPad(UP_DOWN, A);
+                #end
+			
 		super.create();
 	}
 	override function update(elapsed:Float) {
@@ -54,7 +60,7 @@ class PauseSubState extends MusicBeatSubstate
 		}
 		for (i in optionButtons) {
 			if (i.ID == curSelected) {i.animation.play("select");
-				if (FlxG.keys.justPressed.ENTER) {
+				if (controls.ACCEPT) {
 					var choice = optionArray[i.ID];
 					switch (choice) {
 						case "resume song": close();
