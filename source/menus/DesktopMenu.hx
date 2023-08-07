@@ -110,7 +110,7 @@ class DesktopMenu extends MusicBeatState
 							//	FlxG.camera.fade(0x88FFFFFF, 0.6, false);
 							//	new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); FlxG.camera.fade(0x88FFFFFF, 0, true);});
 							//});
-							var video:misc.MP4Handler = new misc.MP4Handler();
+							
 							openSubState(new misc.CustomFadeTransition(.8, false));
 							new FlxTimer().start(.5, function(tmr:FlxTimer)
 							{
@@ -127,7 +127,7 @@ class DesktopMenu extends MusicBeatState
 								PlayState.campaignMisses = 0;
 								CoolUtil.difficulties = ["Hard"];
 								important.WeekData.reloadWeekFiles(true);
-								video.playMP4(Paths.videoRon('ron'), new PlayState(), false, false, false);
+								
 							});
 						}
 						else if (icons[i].length != 0)
