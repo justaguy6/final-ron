@@ -136,6 +136,11 @@ class MasterFreeplayState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+
+		#if android
+                addVirtualPad(LEFT_RIGHT, A_B);
+                #end
+			
 		super.create();
 	}
 	
