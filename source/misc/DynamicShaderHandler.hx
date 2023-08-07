@@ -6,6 +6,7 @@ import flixel.graphics.tile.FlxGraphicsShader;
 import sys.FileSystem;
 #end
 import flixel.FlxCamera;
+import lime.utils.Assets;
 
 using StringTools;
 //fragment header for shader resolution fix
@@ -39,18 +40,18 @@ class DynamicShaderHandler
 		var path = Paths.shaderFragment(fileName);
 		
 
-		if (FileSystem.exists(path))
+		if (Assets.exists(path))
 		{
-			fragSource = sys.io.File.getContent(path);
+			fragSource = Assets.getText(path);
 		}
 
 		
 		var path2 = Paths.shaderVertex(fileName);
 		
 
-		if (FileSystem.exists(path2))
+		if (Assets.exists(path2))
 		{
-			vertSource = sys.io.File.getContent(path2);
+			vertSource = Assets.getText(path2);
 		}
 		#end
 		if (fragSource != "" || vertSource != "")
