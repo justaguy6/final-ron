@@ -300,6 +300,12 @@ class FreeplayState extends MusicBeatState
 		var modeText = new FlxText(10, 10, 0, FreeplayState.mode.toUpperCase(), 48);
 		modeText.setFormat(Paths.font("w95.otf"), 48, FlxColor.WHITE, LEFT);
 		add(modeText);
+
+
+		#if android
+                addVirtualPad(LEFT_FULL, A_B_C);
+                #end
+			
 		super.create();
 
 	}
@@ -381,7 +387,7 @@ class FreeplayState extends MusicBeatState
 		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
 		var space = FlxG.keys.justPressed.SPACE;
-		var ctrl = FlxG.keys.justPressed.CONTROL;
+		var ctrl = FlxG.keys.justPressed.CONTROL  #if android || virtualPad.buttonC.justPressed #end;
 
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
